@@ -1,5 +1,5 @@
 /*
- * jQuery File Upload Plugin 5.32.3
+ * jQuery File Upload Plugin 5.32.6
  * https://github.com/blueimp/jQuery-File-Upload
  *
  * Copyright 2010, Sebastian Tschan
@@ -534,8 +534,10 @@
                 options.url = options.form.prop('action') || location.href;
             }
             // The HTTP request method must be "POST" or "PUT":
-            options.type = (options.type || options.form.prop('method') || '')
-                .toUpperCase();
+            options.type = (options.type ||
+                ($.type(options.form.prop('method')) === 'string' &&
+                    options.form.prop('method')) || ''
+                ).toUpperCase();
             if (options.type !== 'POST' && options.type !== 'PUT' &&
                     options.type !== 'PATCH') {
                 options.type = 'POST';
@@ -1118,9 +1120,8 @@
                         data.files.push(file);
                     }
                 });
-                if (this._trigger('paste', e, data) === false ||
-                        this._onAdd(e, data) === false) {
-                    return false;
+                if (this._trigger('paste', e, data) !== false) {
+                    this._onAdd(e, data);
                 }
             }
         },
@@ -1143,13 +1144,15 @@
 
         _onDragOver: function (e) {
             e.dataTransfer = e.originalEvent && e.originalEvent.dataTransfer;
-            var dataTransfer = e.dataTransfer;
-            if (dataTransfer) {
-                if (this._trigger('dragover', e) === false) {
-                    return false;
-                }
-                if ($.inArray('Files', dataTransfer.types) !== -1) {
-                    dataTransfer.dropEffect = 'copy';
+            var dataTransfer = e.dataTransfer,
+                data = {
+                    dropEffect: 'copy',
+                    preventDefault: true
+                };
+            if (dataTransfer && $.inArray('Files', dataTransfer.types) !== -1 &&
+                    this._trigger('dragover', e, data) !== false) {
+                dataTransfer.dropEffect = data.dropEffect;
+                if (data.preventDefault) {
                     e.preventDefault();
                 }
             }
