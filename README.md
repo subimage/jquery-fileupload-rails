@@ -2,12 +2,12 @@
 
 [jQuery-File-Plugin](https://github.com/blueimp/jQuery-File-Upload) is a file upload plugin written by [Sebastian Tschan](https://github.com/blueimp). jQuery File Upload features multiple file selection, drag&drop support, progress bars and preview images for jQuery. Supports cross-domain, chunked and resumable file uploads and client-side image resizing.
 
-jquery-fileupload-rails is a library that integrates jQuery File Upload for Rails 3.1 Asset Pipeline (Rails 3.2 supported).
+jquery-fileupload-rails is a library that integrates jQuery Fule Upload for Rails 3.1 and higher.
 
 ## Plugin versions
 
 * jQuery File Upload User Interface Plugin 8.8.5
-* jQuery File Upload Plugin 5.32.3
+* jQuery File Upload Plugin 5.32.6
 * jQuery UI Widget 1.10.3+amd
 
 ## Installing Gem
@@ -22,15 +22,13 @@ Require jquery-fileupload in your app/assets/application.js file.
 
 The snippet above will add the following js files to the mainfest file.
 
-    //= require jquery-fileupload/vendor/jquery.ui.widget
-    //= require jquery-fileupload/vendor/load-image
-    //= require jquery-fileupload/vendor/canvas-to-blob
-    //= require jquery-fileupload/vendor/tmpl
-    //= require jquery-fileupload/jquery.iframe-transport
-    //= require jquery-fileupload/jquery.fileupload
-    //= require jquery-fileupload/jquery.fileupload-fp
-    //= require jquery-fileupload/jquery.fileupload-ui
-    //= require jquery-fileupload/locale
+    //=require jquery-fileupload/vendor/jquery.ui.widget
+    //=require jquery-fileupload/vendor/load-image/load-image
+    //=require jquery-fileupload/vendor/canvas-to-blob
+    //=require jquery-fileupload/vendor/tmpl
+    //=require jquery-fileupload/jquery.iframe-transport
+    //=require jquery-fileupload/jquery.fileupload
+    //=require jquery-fileupload/jquery.fileupload-ui
 
 If you only need the basic files, just add the code below to your application.js file. [Basic setup guide](https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin)
 
@@ -47,6 +45,31 @@ The basic setup only includes the following files:
 Require the stylesheet file to app/assets/stylesheets/application.css
 
     *= require jquery.fileupload-ui
+
+## Usign the stylesheet
+
+Require the stylesheet file to app/assets/stylesheets/application.css
+
+    *= require jquery.fileupload
+
+Or, if you are using jQuery UI
+
+    *= require jquery.fileupload-ui
+
+## Using the load-image
+
+You can use full version of load-image library:
+
+    //= require jquery-fileupload/vendor/load-image
+
+or use some parts:
+
+    //= require ./load-image
+    //= require ./load-image-orientation
+    //= require ./load-image-meta
+    //= require ./load-image-ios
+    //= require ./load-image-exif
+    //= require ./load-image-exif-map
 
 ## Using the middleware
 
@@ -65,7 +88,7 @@ need a pro account to watch it though.
 Thanks to [Sebastian Tschan](https://github.com/blueimp) for writing an awesome file upload plugin.
 
 ## License
-Copyright (c) 2012 Tors Dalid
+Copyright (c) 2013 Tors Dalid
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
