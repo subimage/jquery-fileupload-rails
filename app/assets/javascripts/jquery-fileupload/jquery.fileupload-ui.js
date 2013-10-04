@@ -320,7 +320,7 @@
                         );
                     };
                 if (data.url) {
-                    console.log(that.options.dataType);
+                    data['dataType'] = that.options.dataType;
                     $.ajax(data).done(removeNode);
                 } else {
                     removeNode();
