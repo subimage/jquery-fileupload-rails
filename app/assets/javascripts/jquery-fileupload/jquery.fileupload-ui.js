@@ -23,7 +23,7 @@
             './jquery.fileupload-audio',
             './jquery.fileupload-video',
             './jquery.fileupload-validate'
-        ], factory);
+        ], factory);de
     } else {
         // Browser globals:
         factory(
@@ -320,6 +320,7 @@
                         );
                     };
                 if (data.url) {
+                    console.log(that.options.dataType);
                     $.ajax(data).done(removeNode);
                 } else {
                     removeNode();
