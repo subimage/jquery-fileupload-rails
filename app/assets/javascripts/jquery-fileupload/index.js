@@ -5,3 +5,4 @@
 //=require jquery-fileupload/jquery.iframe-transport
 //=require jquery-fileupload/jquery.fileupload
 //=require jquery-fileupload/jquery.fileupload-ui
+//=require jquery-fileupload/jquery.fileupload-process
